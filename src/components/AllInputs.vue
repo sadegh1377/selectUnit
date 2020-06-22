@@ -81,6 +81,7 @@
                     })
                     this.profName = null;
                     this.courseName = null;
+                    this.feedback = null
                 }
             }
         }
