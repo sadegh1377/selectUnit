@@ -14,7 +14,7 @@
             </tr>
             </thead>
             <tr v-for="(cr, index) in courses" :key="index">
-                <td>
+                <td @click="deleteRow(index)" class="hover" title="حذف کردن">
                     {{cr.courseName}}
                 </td>
                 <td>
@@ -70,6 +70,11 @@
         ],
         data() {
             return {}
+        },
+        methods: {
+            deleteRow(index) {
+                this.courses.splice(index, 1);
+            }
         }
     }
 </script>
@@ -81,6 +86,10 @@
     /*    !*height: 70px;*!*/
     /*    font-size: 15px;*/
     /*}*/
+    .hover {
+        cursor: pointer;
+    }
+
     tr:nth-child(odd) {
         background-color: #f2f2f2;
     }
