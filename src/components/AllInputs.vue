@@ -2,16 +2,16 @@
     <div id="inputs">
         <div class="container mt-4">
             <form class="row" @submit.prevent="submit">
-                <div class="col-4">
-                    <!--                    <label class="col-6">نام استاد</label>-->
-                    <input type="text" class="" v-model="profName" placeholder="نام استاد">
-                </div>
-                <div class="col-4">
+                <div class="col-sm-4 col-lg-4">
                     <!--                    <label class="col-6">نام درس</label>-->
-                    <input type="text" class="" v-model="courseName" placeholder="نام درست">
+                    <input type="text" class="input-group" v-model="courseName" placeholder="نام درس">
+                </div>
+                <div class="col-sm-4 col-lg-4">
+                    <!--                    <span class="">نام استاد</span>-->
+                    <input type="text" class="input-group" v-model="profName" placeholder="نام استاد">
                 </div>
                 <div class="">
-                    <button class="btn-block">ثبت</button>
+                    <button class="btn btn-primary btn-lg ">ثبت</button>
                 </div>
                 <p v-show="feedback" class="alert-danger mr-2">{{feedback}}</p>
                 <!--                <div class="col-2">-->
@@ -89,5 +89,12 @@
 </script>
 
 <style scoped>
-
+    input {
+        opacity: 0.6;
+        padding: 10px;
+        border: 1px solid #333333;
+        border-radius: 10px;
+        outline: none;
+        font-weight: bold;
+    }
 </style>

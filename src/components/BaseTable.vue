@@ -3,8 +3,8 @@
         <table class="table">
             <thead class="card-header">
             <tr>
-                <th>نام استاد</th>
                 <th>نام درس</th>
+                <th>نام استاد</th>
                 <th>شنبه</th>
                 <th>یکشنبه</th>
                 <th>دوشنبه</th>
@@ -15,16 +15,16 @@
             </thead>
             <tr v-for="(cr, index) in courses" :key="index">
                 <td>
-                    {{cr.profName}}
+                    {{cr.courseName}}
                 </td>
                 <td>
-                    {{cr.courseName}}
+                    {{cr.profName}}
                 </td>
                 <td>
                     <textarea></textarea>
                 </td>
                 <td>
-                    <textarea class="font"></textarea>
+                    <textarea></textarea>
                 </td>
                 <td>
                     <textarea></textarea>
@@ -39,35 +39,32 @@
                     <textarea></textarea>
                 </td>
 
-<!--                <td>-->
-<!--                    <input type="text">-->
-<!--                </td>-->
-<!--                <td>-->
-<!--                    <input type="text">-->
-<!--                </td>-->
-<!--                <td>-->
-<!--                    <input type="text">-->
-<!--                </td>-->
-<!--                <td>-->
-<!--                    <input type="text">-->
-<!--                </td>-->
-<!--                <td>-->
-<!--                    <input type="text">-->
-<!--                </td>-->
-<!--                <td>-->
-<!--                    <input type="text">-->
-<!--                </td>-->
+                <!--                <td>-->
+                <!--                    <input type="text">-->
+                <!--                </td>-->
+                <!--                <td>-->
+                <!--                    <input type="text">-->
+                <!--                </td>-->
+                <!--                <td>-->
+                <!--                    <input type="text">-->
+                <!--                </td>-->
+                <!--                <td>-->
+                <!--                    <input type="text">-->
+                <!--                </td>-->
+                <!--                <td>-->
+                <!--                    <input type="text">-->
+                <!--                </td>-->
+                <!--                <td>-->
+                <!--                    <input type="text">-->
+                <!--                </td>-->
             </tr>
         </table>
     </div>
 </template>
 
 <script>
-    import Inputs from "./AllInputs";
-
     export default {
         name: "BaseTable",
-        components: {Inputs},
         props: [
             "courses"
         ],
@@ -84,4 +81,7 @@
     /*    !*height: 70px;*!*/
     /*    font-size: 15px;*/
     /*}*/
+    tr:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
 </style>
