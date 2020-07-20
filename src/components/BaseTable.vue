@@ -5,11 +5,9 @@
             <tr>
                 <th>نام درس</th>
                 <th>نام استاد</th>
-                <th>شنبه</th>
-                <th>یکشنبه</th>
-                <th>دوشنبه</th>
-                <th>سه شنبه</th>
-                <th>چهارشنبه</th>
+                <th v-for="day in daysOfWeek" :key="day.id">
+                    {{day}}
+                </th>
                 <th>امتحان</th>
             </tr>
             </thead>
@@ -20,22 +18,7 @@
                 <td>
                     {{cr.profName}}
                 </td>
-                <td>
-                    <textarea></textarea>
-                </td>
-                <td>
-                    <textarea></textarea>
-                </td>
-                <td>
-                    <textarea></textarea>
-                </td>
-                <td>
-                    <textarea></textarea>
-                </td>
-                <td>
-                    <textarea></textarea>
-                </td>
-                <td>
+                <td v-for="i in 6">
                     <textarea></textarea>
                 </td>
 
@@ -69,7 +52,9 @@
             "courses"
         ],
         data() {
-            return {}
+            return {
+                daysOfWeek: ["شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه"]
+            }
         },
         methods: {
             deleteRow(index) {
