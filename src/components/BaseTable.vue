@@ -1,14 +1,11 @@
 <template>
     <div id="BaseTable">
-        <table class="table">
+        <table class="table dir">
             <thead class="card-header">
             <tr>
-                <th>نام درس</th>
-                <th>نام استاد</th>
-                <th v-for="day in daysOfWeek" :key="day.id">
-                    {{day}}
+                <th class="dir" v-for="(header, id) in headerOfTable" :key="id">
+                    {{header}}
                 </th>
-                <th>امتحان</th>
             </tr>
             </thead>
             <tr v-for="(cr, index) in courses" :key="index">
@@ -53,7 +50,7 @@
         ],
         data() {
             return {
-                daysOfWeek: ["شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه"]
+                headerOfTable: ["نام درس", "نام استاد", "شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "امتحان"]
             }
         },
         methods: {
@@ -73,6 +70,10 @@
     /*}*/
     .hover {
         cursor: pointer;
+    }
+
+    .dir {
+        direction: rtl;
     }
 
     tr:nth-child(odd) {

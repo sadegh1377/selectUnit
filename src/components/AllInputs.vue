@@ -4,7 +4,7 @@
             <form class="row" @submit.prevent="submit">
                 <div class="col-sm-4 col-lg-4">
                     <!--                    <label class="col-6">نام درس</label>-->
-                    <input type="text" class="input-group" v-model="courseName" placeholder="نام درس">
+                    <input type="text" class="input-group" v-model="courseName" placeholder="نام درس" ref="courseName">
                 </div>
                 <div class="col-sm-4 col-lg-4">
                     <!--                    <span class="">نام استاد</span>-->
@@ -83,6 +83,7 @@
                     this.courseName = null;
                     this.feedback = null
                 }
+                this.$refs.courseName.focus();
             }
         }
 
