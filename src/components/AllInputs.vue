@@ -2,15 +2,18 @@
     <div id="inputs">
         <div class="container mt-4">
             <form class="row" @submit.prevent="submit">
-                <div class="col-sm-4 col-lg-4">
+                <div class="col-sm-5 col-lg-5">
                     <!--                    <label class="col-6">نام درس</label>-->
                     <input type="text" class="input-group" v-model="courseName" placeholder="نام درس" ref="courseName">
                 </div>
-                <div class="col-sm-4 col-lg-4">
+                <div class="col-sm-5 col-lg-5">
                     <!--                    <span class="">نام استاد</span>-->
                     <input type="text" class="input-group" v-model="profName" placeholder="نام استاد">
                 </div>
-                <div class="">
+                <div class="col-sm-1 col-lg-1">
+                    <input type="number" class="input-group " v-model="unit" placeholder="واحد">
+                </div>
+                <div class="col-sm-1 col-lg-1">
                     <button class="btn btn-primary btn-lg ">ثبت</button>
                 </div>
                 <p v-show="feedback" class="alert-danger mr-2">{{feedback}}</p>
@@ -34,6 +37,7 @@
                 <!--                </div>-->
             </form>
         </div>
+        <p>مجموع واحد:{{sumOfUnit}}</p>
         <base-table :courses="courses" class="mt-5"/>
     </div>
 </template>
@@ -45,24 +49,21 @@
     export default {
         name: "inputs",
         components: {BaseTable},
-        component() {
-            BaseTable
-        },
         data() {
             return {
                 profName: null,
                 courseName: null,
-                // description: "",
-                // dayOfWeek: null,
-                // dayOfExam: "",
+                unit: null,
                 courses: [],
-                feedback: null
+                feedback: null,
+                sumOfUnit: 0
             }
         },
         methods: {
             submit() {
                 if (this.profName === null || this.profName === "" ||
-                    this.courseName === null || this.courseName === "") {
+                    this.courseName === null || this.courseName === "",
+                    this.unit === null || this.unit === "") {
                     this.feedback = "جای های خالی را پر کنید!!!"
                 } else {
                     this.profName = slugify(this.profName, {
@@ -78,9 +79,13 @@
                     this.courses.push({
                         profName: this.profName,
                         courseName: this.courseName,
+                        unit: this.unit,
+                        numberOfTextArea: 6
                     })
+                    this.sumOfUnit += Number(this.unit)
                     this.profName = null;
                     this.courseName = null;
+                    this.unit = null
                     this.feedback = null
                 }
                 this.$refs.courseName.focus();
@@ -91,6 +96,17 @@
 </script>
 
 <style scoped>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    p {
+        text-align: center;
+        font-weight: 600;
+    }
+
     input {
         opacity: 0.6;
         padding: 10px;

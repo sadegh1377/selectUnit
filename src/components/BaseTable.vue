@@ -9,34 +9,18 @@
             </tr>
             </thead>
             <tr v-for="(cr, index) in courses" :key="index">
-                <td @click="deleteRow(index)" class="hover" title="حذف کردن">
+                <td class="hover" title="حذف کردن">
                     {{cr.courseName}}
                 </td>
                 <td>
                     {{cr.profName}}
                 </td>
-                <td v-for="i in 6">
+                <td>
+                    {{cr.unit}}
+                </td>
+                <td v-for="i in cr.numberOfTextArea">
                     <textarea></textarea>
                 </td>
-
-                <!--                <td>-->
-                <!--                    <input type="text">-->
-                <!--                </td>-->
-                <!--                <td>-->
-                <!--                    <input type="text">-->
-                <!--                </td>-->
-                <!--                <td>-->
-                <!--                    <input type="text">-->
-                <!--                </td>-->
-                <!--                <td>-->
-                <!--                    <input type="text">-->
-                <!--                </td>-->
-                <!--                <td>-->
-                <!--                    <input type="text">-->
-                <!--                </td>-->
-                <!--                <td>-->
-                <!--                    <input type="text">-->
-                <!--                </td>-->
             </tr>
         </table>
     </div>
@@ -50,7 +34,8 @@
         ],
         data() {
             return {
-                headerOfTable: ["نام درس", "نام استاد", "شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "امتحان"]
+                headerOfTable: ["نام درس", "نام استاد", "واحد" , "شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "امتحان"]
+
             }
         },
         methods: {
