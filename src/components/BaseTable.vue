@@ -1,6 +1,8 @@
 <template>
     <div id="BaseTable">
-        <button @click="downloadVisualReport">دانلود برنامه</button>
+        <div class="text-center mb-3">
+            <button class="btn btn-primary" @click="downloadVisualReport">ذخیره کردن</button>
+        </div>
         <table ref="table" class="table dir">
             <thead class="card-header">
             <tr>
@@ -10,14 +12,14 @@
             </tr>
             </thead>
             <tr v-for="(cr, index) in courses" :key="index">
-                <td class="hover" title="حذف کردن">
-                    {{cr.courseName}}
+                <td class="" title="حذف کردن">
+                    <input type="text" v-model="cr.courseName">
                 </td>
                 <td>
-                    {{cr.profName}}
+                    <input type="text" v-model="cr.profName">
                 </td>
                 <td>
-                    {{cr.unit}}
+                    <input type="number" v-model="cr.unit" disabled>
                 </td>
                 <td v-for="i in cr.numberOfTextArea">
                     <textarea></textarea>
@@ -45,11 +47,8 @@
             deleteRow(index) {
                 this.courses.splice(index, 1);
             },
-
-            showCaptureRef() {
-            },
             downloadVisualReport() {
-                html2canvas( this.$refs.table).then(canvas => {
+                html2canvas(this.$refs.table).then(canvas => {
                     let a = document.createElement('a');
                     a.href = canvas.toDataURL("image/jpeg")
                         .replace("image/jpeg", "image/octet-stream");
@@ -72,15 +71,40 @@
     /*    !*height: 70px;*!*/
     /*    font-size: 15px;*/
     /*}*/
-    .hover {
-        cursor: pointer;
-    }
+    /*.hover {*/
+    /*    cursor: pointer;*/
+    /*}*/
 
     .dir {
+        text-align: center;
         direction: rtl;
     }
 
     tr:nth-child(odd) {
         background-color: #f2f2f2;
+    }
+
+    input {
+        opacity: 0.6;
+        padding: 10px;
+        border: 1px solid #333333;
+        border-radius: 10px;
+        outline: none;
+        font-weight: 400;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        width: 50px !important;
+    }
+
+    textarea {
+        width: 120px;
+
     }
 </style>

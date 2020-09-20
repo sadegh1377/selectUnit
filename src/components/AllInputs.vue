@@ -38,7 +38,7 @@
             </form>
         </div>
         <p>مجموع واحد:{{sumOfUnit}}</p>
-        <base-table :courses="courses" class="mt-5"/>
+        <base-table :courses="courses" class="mt-3"/>
     </div>
 </template>
 
@@ -62,8 +62,8 @@
         methods: {
             submit() {
                 if (this.profName === null || this.profName === "" ||
-                    this.courseName === null || this.courseName === "",
-                    this.unit === null || this.unit === "") {
+                this.courseName === null || this.courseName === "",
+                this.unit === null || this.unit === "") {
                     this.feedback = "جای های خالی را پر کنید!!!"
                 } else {
                     this.profName = slugify(this.profName, {
@@ -90,8 +90,7 @@
                 }
                 this.$refs.courseName.focus();
             }
-        }
-
+        },
     }
 </script>
 
@@ -113,6 +112,6 @@
         border: 1px solid #333333;
         border-radius: 10px;
         outline: none;
-        font-weight: bold;
+        font-weight: 500;
     }
 </style>
