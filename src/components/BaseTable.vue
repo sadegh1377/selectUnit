@@ -71,15 +71,6 @@
 
 <style scoped>
 
-    /*.font{*/
-    /*    !*width: 150px;*!*/
-    /*    !*height: 70px;*!*/
-    /*    font-size: 15px;*/
-    /*}*/
-    /*.hover {*/
-    /*    cursor: pointer;*/
-    /*}*/
-
     .dir {
         text-align: center;
         direction: rtl;
@@ -95,12 +86,13 @@
     }
 
     input {
-        opacity: 0.6;
+        text-align: center;
+        opacity: 0.8;
         padding: 10px;
         border: 1px solid #333333;
         border-radius: 10px;
         outline: none;
-        font-weight: 400;
+        /*font-weight: 400;*/
     }
 
     input::-webkit-outer-spin-button,
@@ -114,7 +106,9 @@
     }
 
     textarea {
+        text-align: center;
         width: 120px;
-
+        font-weight: 400;
+        opacity: 0.8;
     }
 </style>
