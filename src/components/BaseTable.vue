@@ -1,6 +1,7 @@
 <template>
     <div id="BaseTable">
-        <table class="table dir">
+        <button @click="downloadVisualReport">دانلود برنامه</button>
+        <table ref="table" class="table dir">
             <thead class="card-header">
             <tr>
                 <th class="dir" v-for="(header, id) in headerOfTable" :key="id">
@@ -27,6 +28,8 @@
 </template>
 
 <script>
+    import html2canvas from "html2canvas"
+
     export default {
         name: "BaseTable",
         props: [
@@ -34,14 +37,30 @@
         ],
         data() {
             return {
-                headerOfTable: ["نام درس", "نام استاد", "واحد" , "شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "امتحان"]
+                headerOfTable: ["نام درس", "نام استاد", "واحد", "شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "امتحان"]
 
             }
         },
         methods: {
             deleteRow(index) {
                 this.courses.splice(index, 1);
-            }
+            },
+
+            showCaptureRef() {
+            },
+            downloadVisualReport() {
+                html2canvas( this.$refs.table).then(canvas => {
+                    let a = document.createElement('a');
+                    a.href = canvas.toDataURL("image/jpeg")
+                        .replace("image/jpeg", "image/octet-stream");
+                    a.download = 'برنامه درسی.jpg';
+                    a.click();
+                    document.body.removeChild(a);
+                }).catch((error) => {
+                    console.log(error.toString())
+                });
+            },
+
         }
     }
 </script>
