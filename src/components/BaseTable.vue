@@ -3,29 +3,32 @@
         <div class="text-center mb-3">
             <button class="btn btn-primary" @click="downloadVisualReport">ذخیره کردن</button>
         </div>
-        <table ref="table" class="table dir">
-            <thead class="card-header">
-            <tr>
-                <th class="dir" v-for="(header, id) in headerOfTable" :key="id">
-                    {{header}}
-                </th>
-            </tr>
-            </thead>
-            <tr v-for="(cr, index) in courses" :key="index">
-                <td class="" title="حذف کردن">
-                    <input type="text" v-model="cr.courseName">
-                </td>
-                <td>
-                    <input type="text" v-model="cr.profName">
-                </td>
-                <td>
-                    <input type="number" v-model="cr.unit" disabled>
-                </td>
-                <td v-for="i in cr.numberOfTextArea">
-                    <textarea></textarea>
-                </td>
-            </tr>
-        </table>
+        <div ref="table">
+            <p>مجموع واحد:{{sumOfUnit}}</p>
+            <table ref="table" class="table dir">
+                <thead class="card-header">
+                <tr>
+                    <th class="dir" v-for="(header, id) in headerOfTable" :key="id">
+                        {{header}}
+                    </th>
+                </tr>
+                </thead>
+                <tr v-for="(cr, index) in courses" :key="index">
+                    <td class="" title="حذف کردن">
+                        <input type="text" v-model="cr.courseName">
+                    </td>
+                    <td>
+                        <input type="text" v-model="cr.profName">
+                    </td>
+                    <td>
+                        <input type="number" v-model="cr.unit" disabled>
+                    </td>
+                    <td v-for="i in cr.numberOfTextArea">
+                        <textarea></textarea>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </template>
 
@@ -35,11 +38,13 @@
     export default {
         name: "BaseTable",
         props: [
-            "courses"
+            "courses",
+            "sumOfUnit"
         ],
         data() {
             return {
-                headerOfTable: ["نام درس", "نام استاد", "واحد", "شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "امتحان"]
+                headerOfTable: ["نام درس", "نام استاد", "واحد", "شنبه",
+                    "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "امتحان"]
 
             }
         },
@@ -78,6 +83,11 @@
     .dir {
         text-align: center;
         direction: rtl;
+    }
+
+    p {
+        text-align: center;
+        font-weight: 600;
     }
 
     tr:nth-child(odd) {

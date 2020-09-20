@@ -14,7 +14,7 @@
                     <input type="number" class="input-group " v-model="unit" placeholder="واحد">
                 </div>
                 <div class="col-sm-1 col-lg-1">
-                    <button class="btn btn-primary btn-lg ">ثبت</button>
+                    <button class="btn btn-primary ">ثبت</button>
                 </div>
                 <p v-show="feedback" class="alert-danger mr-2">{{feedback}}</p>
                 <!--                <div class="col-2">-->
@@ -37,8 +37,9 @@
                 <!--                </div>-->
             </form>
         </div>
-        <p>مجموع واحد:{{sumOfUnit}}</p>
-        <base-table :courses="courses" class="mt-3"/>
+        <base-table :courses="courses"
+                    :sumOfUnit="sumOfUnit"
+                    class="mt-3"/>
     </div>
 </template>
 
@@ -80,7 +81,7 @@
                         profName: this.profName,
                         courseName: this.courseName,
                         unit: this.unit,
-                        numberOfTextArea: 6
+                        numberOfTextArea: 6,
                     })
                     this.sumOfUnit += Number(this.unit)
                     this.profName = null;
@@ -99,11 +100,6 @@
     input::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
-    }
-
-    p {
-        text-align: center;
-        font-weight: 600;
     }
 
     input {
