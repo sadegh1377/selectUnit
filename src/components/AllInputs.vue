@@ -102,6 +102,10 @@
         margin: 0;
     }
 
+    input[type=number] {
+        -moz-appearance:textfield;
+    }
+
     input {
         opacity: 0.6;
         padding: 10px;

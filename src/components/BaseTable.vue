@@ -95,7 +95,7 @@
     input {
         text-align: center;
         opacity: 0.8;
-        padding: 10px;
+        padding: 16px;
         border: 1px solid #333333;
         border-radius: 10px;
         outline: none;
@@ -109,6 +109,7 @@
     }
 
     input[type=number] {
+        -moz-appearance:textfield;
         width: 50px !important;
     }
 
