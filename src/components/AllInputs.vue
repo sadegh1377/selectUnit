@@ -57,7 +57,7 @@
                 unit: null,
                 courses: [],
                 feedback: null,
-                sumOfUnit: 0
+                sumOfUnit: 0,
             }
         },
         methods: {
@@ -82,6 +82,8 @@
                         courseName: this.courseName,
                         unit: this.unit,
                         numberOfTextArea: 6,
+                        editingProfName: false,
+                        editingCrsName: false
                     })
                     this.sumOfUnit += Number(this.unit)
                     this.profName = null;
@@ -103,7 +105,7 @@
     }
 
     input[type=number] {
-        -moz-appearance:textfield;
+        -moz-appearance: textfield;
     }
 
     input {

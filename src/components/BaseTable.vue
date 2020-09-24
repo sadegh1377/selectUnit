@@ -11,14 +11,31 @@
                 </tr>
                 </thead>
                 <tr v-for="(cr, index) in courses" :key="index">
-                    <td class="" title="حذف کردن">
-                        <input type="text" v-model="cr.courseName">
+                    <td class="">
+                        <div v-if="!cr.editingCrsName"
+                             @dblclick="editCrsName(cr)">{{cr.courseName}}
+                        </div>
+                        <input type="text"
+                               v-else
+                               @blur="doneEditingCrs(cr)"
+                               @keyup.enter="doneEditingCrs(cr)"
+                               @keyup.esc="cancelEditingCrs(cr)"
+                               v-model="cr.courseName">
                     </td>
                     <td>
-                        <input type="text" v-model="cr.profName">
+                        <div v-if="!cr.editingProfName"
+                             @dblclick="editProfName(cr)">{{cr.profName}}
+                        </div>
+                        <input type="text"
+                               v-else
+                               v-focus
+                               @blur="doneEditingProf(cr)"
+                               @keyup.enter="doneEditingProf(cr)"
+                               @keyup.esc="cancelEditingProf(cr)"
+                               v-model="cr.profName">
                     </td>
                     <td>
-                        <input type="number" v-model="cr.unit" disabled>
+                        <input type="number" v-model="cr.unit" disabled title="currently disable">
                     </td>
                     <td v-for="i in cr.numberOfTextArea">
                         <textarea></textarea>
@@ -43,11 +60,20 @@
             "courses",
             "sumOfUnit"
         ],
+        directives: {
+            focus: {
+                inserted(el) {
+                    el.focus()
+                }
+            }
+        },
         data() {
             return {
                 headerOfTable: ["نام درس", "نام استاد", "واحد", "شنبه",
                     "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "امتحان"],
                 feedback: null,
+                beforeEditingCacheProf: null,
+                beforeEditingCacheCrs: null
 
             }
         },
@@ -71,7 +97,34 @@
                     });
                 }
             },
-
+            editProfName(cr) {
+                this.beforeEditingCacheProf = cr.profName
+                cr.editingProfName = true
+            },
+            doneEditingProf(cr) {
+                if (cr.profName.trim() === "") {
+                    cr.profName = this.beforeEditingCacheProf
+                }
+                cr.editingProfName = false
+            },
+            cancelEditingProf(cr) {
+                cr.profName = this.beforeEditingCacheProf
+                cr.editingProfName = false
+            },
+            editCrsName(cr) {
+                this.beforeEditingCacheCrs = cr.courseName
+                cr.editingCrsName = true
+            },
+            doneEditingCrs(cr) {
+                if (cr.courseName.trim() === "") {
+                    cr.courseName = this.beforeEditingCacheCrs
+                }
+                cr.editingCrsName = false
+            },
+            cancelEditingCrs(cr) {
+                cr.courseName = this.beforeEditingCacheCrs
+                cr.editingCrsName = false
+            }
         }
     }
 </script>
@@ -109,7 +162,7 @@
     }
 
     input[type=number] {
-        -moz-appearance:textfield;
+        -moz-appearance: textfield;
         width: 50px !important;
     }
 
