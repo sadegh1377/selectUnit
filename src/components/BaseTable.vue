@@ -13,7 +13,9 @@
                 <tr v-for="(cr, index) in courses" :key="index">
                     <td class="">
                         <div class="filed" v-if="!cr.editingCrsName"
-                             @dblclick="editCrsName(cr)">{{cr.courseName}}
+                             @dblclick="editCrsName(cr)"
+                             title="دابل کلیک">
+                            {{cr.courseName}}
                         </div>
                         <input type="text"
                                v-else
@@ -25,7 +27,9 @@
                     </td>
                     <td>
                         <div class="filed" v-if="!cr.editingProfName"
-                             @dblclick="editProfName(cr)">{{cr.profName}}
+                             @dblclick="editProfName(cr)"
+                             title="دابل کلیک">
+                            {{cr.profName}}
                         </div>
                         <input type="text"
                                v-else
@@ -156,7 +160,8 @@
         width: 210px;
         /*font-weight: 400;*/
     }
-    .filed{
+
+    .filed {
         text-align: center;
         opacity: 0.8;
         padding: 16px;
@@ -176,8 +181,8 @@
     input[type=number] {
         -moz-appearance: textfield;
         width: 50px !important;
-        border: none!important;
-        opacity: 1!important;
+        border: none !important;
+        opacity: 1 !important;
     }
 
     textarea {
