@@ -12,18 +12,19 @@
                 </thead>
                 <tr v-for="(cr, index) in courses" :key="index">
                     <td class="">
-                        <div v-if="!cr.editingCrsName"
+                        <div class="filed" v-if="!cr.editingCrsName"
                              @dblclick="editCrsName(cr)">{{cr.courseName}}
                         </div>
                         <input type="text"
                                v-else
+                               v-focus
                                @blur="doneEditingCrs(cr)"
                                @keyup.enter="doneEditingCrs(cr)"
                                @keyup.esc="cancelEditingCrs(cr)"
                                v-model="cr.courseName">
                     </td>
                     <td>
-                        <div v-if="!cr.editingProfName"
+                        <div class="filed" v-if="!cr.editingProfName"
                              @dblclick="editProfName(cr)">{{cr.profName}}
                         </div>
                         <input type="text"
@@ -152,7 +153,18 @@
         border: 1px solid #333333;
         border-radius: 10px;
         outline: none;
+        width: 210px;
         /*font-weight: 400;*/
+    }
+    .filed{
+        text-align: center;
+        opacity: 0.8;
+        padding: 16px;
+        /*border: 1px solid #333333;*/
+        /*border-radius: 10px;*/
+        outline: none;
+        width: 210px;
+        overflow: auto;
     }
 
     input::-webkit-outer-spin-button,
@@ -164,6 +176,8 @@
     input[type=number] {
         -moz-appearance: textfield;
         width: 50px !important;
+        border: none!important;
+        opacity: 1!important;
     }
 
     textarea {
