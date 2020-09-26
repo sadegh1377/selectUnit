@@ -87,6 +87,7 @@
                 this.courses.splice(index, 1);
             },
             downloadVisualReport() {
+                window.scrollTo(0, 0);
                 if (this.courses.length === 0) {
                     this.feedback = "حداقل یک سطر باید پر شود"
                 } else {
