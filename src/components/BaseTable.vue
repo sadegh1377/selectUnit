@@ -12,7 +12,7 @@
                 </thead>
                 <tr v-for="(cr, index) in courses" :key="index">
                     <td class="">
-                        <div class="filed" v-if="!cr.editingCrsName"
+                        <div class="filed " v-if="!cr.editingCrsName"
                              @dblclick="editCrsName(cr)"
                              title="دابل کلیک">
                             {{cr.courseName}}
@@ -163,6 +163,8 @@
     }
 
     .filed {
+        margin-right: auto;
+        margin-left: auto;
         text-align: center;
         opacity: 0.8;
         padding: 16px;
