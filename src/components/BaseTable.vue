@@ -131,7 +131,8 @@
                 cr.courseName = this.beforeEditingCacheCrs
                 cr.editingCrsName = false
             }
-        }
+        },
+
     }
 </script>
 
