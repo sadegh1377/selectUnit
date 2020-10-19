@@ -1,6 +1,6 @@
 <template>
     <div id="CalculateAvg" class="container">
-        <table class="table">
+        <table class="table border">
             <thead class="card-header">
             <tr>
                 <th>نام درس</th>
@@ -103,13 +103,17 @@
 </script>
 
 <style scoped>
+    #CalculateAvg {
+        height: 70vh;
+    }
+
     input {
         outline: none;
         text-align: center;
     }
 
-    #CalculateAvg {
-        height: 70vh;
+    .border {
+        border-radius: 20px;
     }
 
     .table {

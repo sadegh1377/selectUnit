@@ -1,9 +1,9 @@
 <template>
     <div id="app">
         <div id="nav">
-            <router-link to="/" class="fontSize">Select sec</router-link>
+            <router-link to="/" class="fontSize">انتخاب واحد</router-link>
             |
-            <router-link to="/calculate-avg" class="fontSize">Calculate Avg</router-link>
+            <router-link to="/calculate-avg" class="fontSize">محاسبه معدل</router-link>
         </div>
         <router-view/>
     </div>
@@ -33,5 +33,6 @@
 
     #nav a.router-link-exact-active {
         color: #42b983;
+        font-size: 40px !important;
     }
 </style>

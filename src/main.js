@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {library} from '@fortawesome/fontawesome-svg-core'
-import {faTrash,faPlus} from '@fortawesome/free-solid-svg-icons'
+import {faTrash ,faPlus} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 
 library.add(faTrash,faPlus)
