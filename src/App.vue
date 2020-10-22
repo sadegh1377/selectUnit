@@ -4,6 +4,8 @@
             <router-link to="/" class="fontSize">انتخاب واحد</router-link>
             |
             <router-link to="/calculate-avg" class="fontSize">محاسبه معدل</router-link>
+            |
+            <router-link to="/to-do-list" class="fontSize">لیست کار</router-link>
         </div>
         <router-view/>
     </div>
