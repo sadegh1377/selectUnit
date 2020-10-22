@@ -6,6 +6,8 @@
             <router-link to="/calculate-avg" class="fontSize">محاسبه معدل</router-link>
             |
             <router-link to="/to-do-list" class="fontSize">لیست کار</router-link>
+<!--            |-->
+            <!--            <router-link to="/calculator" class="fontSize">ماشین حساب</router-link>-->
         </div>
         <router-view/>
     </div>
