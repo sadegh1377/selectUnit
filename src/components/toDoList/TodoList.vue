@@ -1,9 +1,9 @@
 <template>
     <div id="TodoList" class="">
-        <div class="container w-50 mainBackground border p-3">
+        <div class="container col-sm-12 col-md-8 col-lg-6 mainBackground border p-3">
             <div class="row p-1 m-0 border listBackground mt-2"
                  v-for="(task,index) in tasksList" :key="index">
-                <div class="col-sm-8 col-md-8 col-lg-8 text-right p-0">
+                <div class="col-sm-6 col-md-8 col-lg-8 text-right p-0">
                     <input type="checkbox" class="checkbox mt-3" v-model="task.isChecked"
                            @click="checked(task)">
                     <p class="mr-3 d-inline"
@@ -18,7 +18,7 @@
                            @keyup.esc="cancelEditing(task)"
                            v-model="task.taskName">
                 </div>
-                <div class="col-sm-4 col-md-4 col-lg-4 text-left">
+                <div class="col-sm-6 col-md-4 col-lg-4 text-left">
                     <font-awesome-icon icon="edit" class="mt-2 hover"
                                        @click="editTask(task)"></font-awesome-icon>
                     |
