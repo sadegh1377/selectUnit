@@ -2,6 +2,7 @@
     <div id="TodoList" class="">
         <div class="container col-sm-12 col-md-8 col-lg-6 mainBackground border p-3">
             <div class="row p-1 m-0 border listBackground mt-2"
+                 :class="{bgChecked: task.isChecked === true}"
                  v-for="(task,index) in tasksList" :key="index">
                 <div class="col-sm-6 col-md-8 col-lg-8 text-right p-0">
                     <input type="checkbox" class="checkbox mt-3" v-model="task.isChecked"
@@ -67,7 +68,8 @@
         methods: {
             addTask() {
                 if (this.taskName === null ||
-                    this.taskName === "") {
+                    this.taskName === "" ||
+                    this.taskName.match(/^ *$/) !== null) {
                     this.feedback = "نام کار نمیتواند خالی باشد"
                 } else {
                     this.tasksList.push({
@@ -128,6 +130,11 @@
 
     .checked {
         text-decoration: line-through;
+    }
+
+    .bgChecked {
+        background-color: #42b983;
+        /*color: #f9f9f9;*/
     }
 
     input {
