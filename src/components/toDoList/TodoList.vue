@@ -3,7 +3,8 @@
         <div class="container col-sm-12 col-md-8 col-lg-6 mainBackground border p-3">
             <div class="row p-1 m-0 border listBackground mt-2"
                  :class="{bgChecked: task.isChecked === true}"
-                 v-for="(task,index) in tasksList" :key="index">
+                 v-for="(task,index) in tasksList" :key="index"
+                 @dblclick="addSubTask(index)">
                 <div class="col-sm-6 col-md-8 col-lg-8 text-right p-0">
                     <input type="checkbox" class="checkbox mt-3" v-model="task.isChecked"
                            @click="checked(task)">
@@ -20,13 +21,14 @@
                            v-model="task.taskName">
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-4 text-left">
-                    <font-awesome-icon icon="edit" class="mt-2 hover"
+                    <font-awesome-icon icon="edit" class="mt-2 hover editColor"
                                        @click="editTask(task)"></font-awesome-icon>
                     |
-                    <font-awesome-icon icon="trash" class="mt-2 hover"
+                    <font-awesome-icon icon="trash" class="mt-2 hover deleteColor"
                                        @click="deleteTack(index)"></font-awesome-icon>
                 </div>
             </div>
+            
             <div class="mt-2">
                 <input type="text" class="w-75 text-center "
                        v-model="taskName"
@@ -51,7 +53,12 @@
                     {
                         taskName: "انجام پروژه درسی",
                         isChecked: false,
-                        editing: false
+                        editing: false,
+                        subTask: {
+                            taskName: "پروژه شبکه",
+                            isChecked: false,
+                            editing: false,
+                        }
                     }
                 ],
                 feedback: null
@@ -81,6 +88,9 @@
                     this.feedback = null;
                 }
             },
+            addSubTask(task) {
+
+            },
             deleteTack(task) {
                 this.tasksList.splice(task, 1);
                 if (this.tasksList.length === 0) {
@@ -109,6 +119,15 @@
 </script>
 
 <style scoped>
+
+    .editColor {
+        color: #0d86ff;
+    }
+
+    .deleteColor {
+        color: #f84949;
+    }
+
     .mainBackground {
         background-color: #f9f9f9;
     }
@@ -133,7 +152,7 @@
     }
 
     .bgChecked {
-        background-color: #42b983;
+        background-color: #6ae7af;
         /*color: #f9f9f9;*/
     }
 

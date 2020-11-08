@@ -4,7 +4,7 @@
             <div class="header" :class="{white : isDark}">
                 <div class="menu" :class="{white : isDark}">
                     <button type="button" class="button" :class="{whiteButton : isDark}">
-                        <i class="fa fa-bars" aria-hidden="true"></i>
+                        <font-awesome-icon icon="bars"></font-awesome-icon>
                     </button>
                 </div>
                 <div class="label" :class="{white : isDark}">
@@ -14,7 +14,7 @@
                 </div>
                 <div class="dark_and_light" :class="{whiteButton : isDark}">
                     <button type="button" class="button" @click="changeColor" :class="{whiteButton : isDark}">
-                        <i class="fa fa-moon"></i>
+                        <font-awesome-icon icon="moon"></font-awesome-icon>
                     </button>
                 </div>
             </div>
@@ -25,11 +25,11 @@
                         <br>
                         <br>
                         <!--                        <span>{{inputNum}}</span>-->
-                        <input type="text" v-model="inputNum" :class="{whiteInput : isDark}">
+                        <input type="text" class="" v-model="inputNum" :class="{whiteInput : isDark}">
                         <br>
                         <br>
-                        <br>
-                        <span :class="{whiteInput : isDark}">answer is: {{answer}}</span>
+                        <span class="text-left"
+                              :class="{whiteInput : isDark}">answer is {{answer}}</span>
                     </div>
                     <!--                    <input type="text" class="screen" :class="{white : isDark}"-->
                     <!--                           v-model="inputNum"-->
@@ -43,14 +43,14 @@
                         <td>
                             <button type="button" class="button prime-button" value="c" :class="{whiteButton : isDark}"
                                     @click="deleteAll">
-                                c
+                                C
                             </button>
                         </td>
                         <td>
                             <button type="button" class="button prime-button" value="delete"
                                     :class="{whiteButton : isDark}"
                                     @click="deleteJustOne">
-                                <i class="fa fa-eraser"></i>
+                                <font-awesome-icon icon="eraser"></font-awesome-icon>
                             </button>
                         </td>
                         <td>
@@ -156,7 +156,8 @@
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="button prime-button" value="=" :class="{whiteButton : isDark}"
+                            <button type="button" class="button prime-button"
+                                    value="=" :class="{whiteButton : isDark}"
                                     @click="equal">
                                 =
                             </button>
@@ -221,10 +222,15 @@
 </script>
 
 <style scoped>
+
+    input:focus {
+        color: #f9f9f9;
+    }
+
     .center {
         margin-right: auto;
         margin-left: auto;
-        height: 100px;
+        height: 200px;
         width: 200px;
     }
 
@@ -249,7 +255,7 @@
     }
 
     .whiteButton {
-        background-color: burlywood !important;
+        background-color: #42b983 !important;
         width: 80%;
         height: 100%;
         border: 0px;
@@ -261,12 +267,12 @@
 
     .whiteButton:focus {
         outline: none !important;
-        background-color: orangered !important;
+        background-color: #42b983 !important;
         color: white;
     }
 
     .whiteButton:hover {
-        background-color: orange !important;
+        background-color: #42b983 !important;
         color: black;
     }
 
@@ -287,9 +293,9 @@
 
     /*--------------------------------------------*/
     .calculator {
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
+        /*-webkit-box-align: center;*/
+        /*-ms-flex-align: center;*/
+        /*align-items: center;*/
         text-align: center;
         color: cornsilk;
         position: absolute;
@@ -330,13 +336,13 @@
     }
 
     .calculator .header .menu .button:hover {
-        background-color: orange;
+        background-color: #42b983;
         color: black;
     }
 
     .calculator .header .menu .button:focus {
         outline: none;
-        background-color: orangered;
+        background-color: #42b983;
         color: black;
     }
 
