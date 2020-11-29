@@ -2,6 +2,10 @@
 
 https://select-sec.web.app/
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 87a789b7c72770364e60b8900e4205805a06148e
 ## Project setup
 ```
 npm install
