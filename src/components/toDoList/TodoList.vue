@@ -1,5 +1,6 @@
 <template>
     <div id="TodoList" class="">
+
         <div class="container col-sm-12 col-md-8 col-lg-6 mainBackground border p-3">
             <div class="row p-1 m-0 border listBackground mt-2 rounded"
                  :class="{bgChecked: task.isChecked === true}"
@@ -31,40 +32,43 @@
                     <font-awesome-icon icon="trash" class="mt-2 hover deleteColor"
                                        @click="deleteTask(index,null)"></font-awesome-icon>
                 </div>
-                <div v-if="task.isSubTaskOn" class="w-100">
-                    <div class="row p-1 w-75 center border subListBackground mt-2 rounded"
-                         :class="{bgChecked: subTask.isChecked === true}"
-                         v-for="(subTask,subIndex) in tasksList[index].subTasks" :key="subIndex">
-                        <div class="col-sm-6 col-md-8 col-lg-8 text-right p-0">
-                            <input type="checkbox" class="checkbox mt-3" v-model="subTask.isChecked"
-                                   @click="checked(subTask,null)">
-                            <p class="mr-3 d-inline"
-                               :class="{checked : subTask.isChecked === true}"
-                               v-if="!subTask.editing">{{subTask.taskName}}</p>
-                            <input type="text"
-                                   class="mr-3 rounded"
-                                   v-else
-                                   v-focus
-                                   @blur="doneEditing(subTask)"
-                                   @keyup.enter="doneEditing(subTask)"
-                                   @keyup.esc="cancelEditing(subTask)"
-                                   v-model="subTask.taskName">
+                <transition name="fade">
+                    <div v-show="task.isSubTaskOn" class="w-100 subTaskAnime">
+                        <div class="row p-1 w-75 center border subListBackground mt-2 rounded"
+                             :class="{bgChecked: subTask.isChecked === true}"
+                             v-for="(subTask,subIndex) in tasksList[index].subTasks" :key="subIndex">
+                            <div class="col-sm-6 col-md-8 col-lg-8 text-right p-0">
+                                <input type="checkbox" class="checkbox mt-3" v-model="subTask.isChecked"
+                                       @click="checked(subTask,null)">
+                                <p class="mr-3 d-inline"
+                                   :class="{checked : subTask.isChecked === true}"
+                                   v-if="!subTask.editing">{{subTask.taskName}}</p>
+                                <input type="text"
+                                       class="mr-3 rounded"
+                                       v-else
+                                       v-focus
+                                       @blur="doneEditing(subTask)"
+                                       @keyup.enter="doneEditing(subTask)"
+                                       @keyup.esc="cancelEditing(subTask)"
+                                       v-model="subTask.taskName">
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-4 text-left">
+                                <font-awesome-icon icon="edit" class="mt-2 hover editColor"
+                                                   @click="editTask(subTask)"></font-awesome-icon>
+                                |
+                                <font-awesome-icon icon="trash" class="mt-2 hover deleteColor"
+                                                   @click="deleteTask(index,subIndex)"></font-awesome-icon>
+                            </div>
                         </div>
-                        <div class="col-sm-6 col-md-4 col-lg-4 text-left">
-                            <font-awesome-icon icon="edit" class="mt-2 hover editColor"
-                                               @click="editTask(subTask)"></font-awesome-icon>
-                            |
-                            <font-awesome-icon icon="trash" class="mt-2 hover deleteColor"
-                                               @click="deleteTask(index,subIndex)"></font-awesome-icon>
-                        </div>
+                        <input type="text" class="center  mt-2 text-center"
+                               v-model="task.subTaskName"
+                               @keyup.enter="addSubTask(index,task.subTaskName)"
+                               v-focus
+                               placeholder="پروژه شبکه">
                     </div>
-                    <input type="text" class="center  mt-2 text-center"
-                           v-model="task.subTaskName"
-                           @keyup.enter="addSubTask(index,task.subTaskName)"
-                           v-focus
-                           placeholder="پروژه شبکه">
-                </div>
+                </transition>
             </div>
+
 
             <div class="mt-2">
                 <input type="text" class="w-75 text-center "
@@ -155,16 +159,13 @@
             },
             openSubTask(index) {
                 this.tasksList[index].isSubTaskOn = !this.tasksList[index].isSubTaskOn;
-                console.log(this.tasksList[index].isSubTaskOn)
             },
             deleteTask(index, subIndex) {
-                console.log(index, subIndex)
                 if (subIndex === null) {
                     this.tasksList.splice(index, 1);
-                    console.log("deleting whole object")
+
                 } else {
                     this.tasksList[index].subTasks.splice(subIndex, 1);
-                    console.log("deleting subObject")
                 }
                 if (this.tasksList.length === 0) {
                     this.feedback = null;
@@ -186,12 +187,10 @@
             },
             checked(task, index) {
                 if (index === null) {
-                    console.log("one checked")
                     this.isChecked = task.isChecked === false;
                 } else {
                     task.subTasks.forEach((subTask) => {
                         subTask.isChecked = task.isChecked === false;
-                        console.log("all checked")
                     })
                 }
             }
@@ -203,6 +202,21 @@
     .center {
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .fade-enter-active {
+        transition: max-height .3s ease-in, opacity .9s ease-in-out;
+        max-height: 1000px;
+    }
+
+    .fade-leave-active {
+        transition: max-height 0.4s ease-out, opacity 0.2s ease-in-out;
+        max-height: 1000px;
+    }
+
+    .fade-enter, .fade-leave-to {
+        max-height: 0;
+        opacity: 0;
     }
 
     .editColor {
