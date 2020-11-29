@@ -6,14 +6,28 @@
             <router-link to="/calculate-avg" class="fontSize">محاسبه معدل</router-link>
             |
             <router-link to="/to-do-list" class="fontSize">لیست کار</router-link>
-<!--            |-->
-<!--                        <router-link to="/calculator" class="fontSize">ماشین حساب</router-link>-->
+            <!--            |-->
+            <!--                        <router-link to="/calculator" class="fontSize">ماشین حساب</router-link>-->
         </div>
-        <router-view/>
+        <transition name="fade" mode="out-in">
+            <router-view/>
+        </transition>
     </div>
 </template>
 
 <style>
+    .fade-enter-active {
+        transition: opacity 0.3s ease-in;
+    }
+
+    .fade-leave-active {
+        transition: opacity 0.3s ease-out;
+    }
+
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
+    }
+
     .fontSize {
         font-size: 30px;
     }
