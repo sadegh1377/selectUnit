@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import SelectUnit from '../components/selectUnit/SelectUnit.vue'
 import CalculateAvg from "../components/average/CalculateAvg";
 import TodoList from "../components/toDoList/TodoList";
 import Calculator from "../components/calculatur/Calculator";
@@ -10,8 +10,8 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: '/',
-        name: 'Home',
-        component: Home
+        name: 'SelectUnit',
+        component: SelectUnit
     },
     {
         path: '/calculate-avg',

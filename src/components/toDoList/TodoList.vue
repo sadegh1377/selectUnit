@@ -10,11 +10,11 @@
                            class="checkbox mt-3 col-sm-1 col-md-1 col-lg-1 "
                            v-model="task.isChecked"
                            @click="checked(task,index)">
-                    <p class=" d-inline col-sm-11 col-md-11 col-lg-11"
+                    <p class=" mr-3 d-inline"
                        :class="{checked : task.isChecked === true}"
                        v-if="!task.editing">{{task.taskName}}</p>
                     <input type="text"
-                           class=" rounded col-lg-11"
+                           class=" rounded mr-3 d-inline"
                            v-else
                            v-focus
                            @blur="doneEditing(task)"
