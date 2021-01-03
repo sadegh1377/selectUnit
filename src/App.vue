@@ -12,7 +12,7 @@
         <!--            &lt;!&ndash;                        <router-link to="/calculator" class="fontSize">ماشین حساب</router-link>&ndash;&gt;-->
         <!--        </div>-->
         <div class="bg-success container text-white w-100 mt-2 customRounded2">
-            <h3 class="m-0">یک رای گیری ساده برای پیدا کردن بهترین استاد از نظر داشنجویان</h3>
+            <h3 class="m-0">یک رای گیری ساده برای پیدا کردن بهترین استاد از نظر دانشجویان</h3>
         </div>
         <transition name="fade" mode="out-in">
             <router-view/>
