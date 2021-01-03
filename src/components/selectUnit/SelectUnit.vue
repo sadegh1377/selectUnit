@@ -1,7 +1,7 @@
 <template>
     <div id="BaseTable">
+        <p>مجموع واحد:{{calculateSum}}</p>
         <div ref="table">
-            <p>مجموع واحد:{{sumOfUnit}}</p>
             <table ref="table" class="table dir">
                 <thead class="card-header">
                 <tr>
@@ -14,21 +14,14 @@
                     <td class="">
                         <input type="text"
                                v-focus
-                               @blur="doneEditingCrs(cr)"
-                               @keyup.enter="doneEditingCrs(cr)"
-                               @keyup.esc="cancelEditingCrs(cr)"
-                               v-model="courseName">
+                               v-model="cr.courseName">
                     </td>
                     <td>
                         <input type="text"
-                               v-focus
-                               @blur="doneEditingProf(cr)"
-                               @keyup.enter="doneEditingProf(cr)"
-                               @keyup.esc="cancelEditingProf(cr)"
-                               v-model="profName">
+                               v-model="cr.profName">
                     </td>
                     <td>
-                        <input type="number" v-model="unit">
+                        <input type="number" v-model.number="cr.unit" min="0" max="10">
                     </td>
                     <td v-for="i in numberOfTextArea">
                         <textarea></textarea>
@@ -64,27 +57,31 @@
         },
         data() {
             return {
-                profName: null,
-                courseName: null,
-                unit: null,
                 courses: [{
-                    profName: "دکتر رضوانی",
-                    courseName: "مبانی رایانش امن",
-                    unit: 3,
+                    profName: null,
+                    courseName: null,
+                    unit: null,
                 }],
-                sumOfUnit: 0,
+                sumOfUnits: 0,
                 numberOfTextArea: 6,
                 headerOfTable: ["نام درس", "نام استاد", "واحد", "شنبه",
                     "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "امتحان"],
                 feedback: null,
-                beforeEditingCacheProf: null,
-                beforeEditingCacheCrs: null
+                preUnit: null
 
             }
         },
         methods: {
             deleteRow(index) {
                 this.courses.splice(index, 1);
+            },
+            addCrsRow() {
+                console.log(this.courses)
+                this.courses.push({
+                    profName: null,
+                    courseName: null,
+                    unit: null,
+                })
             },
             downloadVisualReport() {
                 window.scrollTo(0, 0);
@@ -103,44 +100,11 @@
                     });
                 }
             },
-            addCrsRow() {
-                console.log(this.courses)
-                this.courses.push({
-                    profName: this.profName,
-                    courseName: this.courseName,
-                    unit: this.unit,
-                })
-            },
-            editProfName(cr) {
-                this.beforeEditingCacheProf = cr.profName
-                cr.editingProfName = true
-            },
-            doneEditingProf(cr) {
-                if (cr.profName.trim() === "") {
-                    cr.profName = this.beforeEditingCacheProf
-                }
-                cr.editingProfName = false
-            },
-            cancelEditingProf(cr) {
-                cr.profName = this.beforeEditingCacheProf
-                cr.editingProfName = false
-            },
-            editCrsName(cr) {
-                this.beforeEditingCacheCrs = cr.courseName
-                cr.editingCrsName = true
-            },
-            doneEditingCrs(cr) {
-                if (cr.courseName.trim() === "") {
-                    cr.courseName = this.beforeEditingCacheCrs
-                }
-                cr.editingCrsName = false
-            },
-            cancelEditingCrs(cr) {
-                cr.courseName = this.beforeEditingCacheCrs
-                cr.editingCrsName = false
-            }
         },
-
+        computed: {
+            calculateSum() {
+            }
+        }
     }
 </script>
 

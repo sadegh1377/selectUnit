@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "select-sec",
+    "site": "uni-voting",
     "public": "dist",
     "ignore": [
       "firebase.json",

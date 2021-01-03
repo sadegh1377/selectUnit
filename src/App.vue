@@ -1,14 +1,16 @@
 <template>
     <div id="app">
-        <div id="nav">
-            <router-link to="/" class="fontSize">انتخاب واحد</router-link>
-            |
-            <router-link to="/calculate-avg" class="fontSize">محاسبه معدل</router-link>
-            |
-            <router-link to="/to-do-list" class="fontSize">لیست کار</router-link>
-            <!--            |-->
-            <!--                        <router-link to="/calculator" class="fontSize">ماشین حساب</router-link>-->
-        </div>
+<!--        <div id="nav">-->
+        <!--            <router-link to="/" class="fontSize">انتخاب واحد</router-link>-->
+        <!--            |-->
+        <!--            <router-link to="/calculate-avg" class="fontSize">محاسبه معدل</router-link>-->
+        <!--            |-->
+        <!--            <router-link to="/to-do-list" class="fontSize">لیست کار</router-link>-->
+        <!--            |-->
+        <!--            <router-link to="/voting" class="fontSize">رای گیری</router-link>-->
+        <!--            &lt;!&ndash;            |&ndash;&gt;-->
+        <!--            &lt;!&ndash;                        <router-link to="/calculator" class="fontSize">ماشین حساب</router-link>&ndash;&gt;-->
+        <!--        </div>-->
         <transition name="fade" mode="out-in">
             <router-view/>
         </transition>
