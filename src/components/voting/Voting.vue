@@ -3,7 +3,7 @@
         <!--        <button @click="addJsonToStore">add to database</button>-->
         <!--        <button @click="getImageUrl">calllllllll</button>-->
 
-        <div class="bg-info rounded text-white mt-1">
+        <div class="bg-success rounded text-white">
             <h3>یک رای گیری ساده برای پیدا کردن بهترین استاد از نظر داشنجویان</h3>
         </div>
         <div class="row equal">
@@ -263,7 +263,7 @@
             }
         ,
         created() {
-            firebase.firestore().collection("professors").orderBy("id")
+            firebase.firestore().collection("professors").orderBy("rate", "desc")
                 .get().then((snapshot) => {
                 snapshot.forEach((doc) => {
                     // console.log(doc.data())
