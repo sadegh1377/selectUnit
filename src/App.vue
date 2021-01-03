@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-<!--        <div id="nav">-->
+        <!--        <div id="nav">-->
         <!--            <router-link to="/" class="fontSize">انتخاب واحد</router-link>-->
         <!--            |-->
         <!--            <router-link to="/calculate-avg" class="fontSize">محاسبه معدل</router-link>-->
@@ -11,6 +11,9 @@
         <!--            &lt;!&ndash;            |&ndash;&gt;-->
         <!--            &lt;!&ndash;                        <router-link to="/calculator" class="fontSize">ماشین حساب</router-link>&ndash;&gt;-->
         <!--        </div>-->
+        <div class="bg-success container text-white w-100 mt-2 customRounded2">
+            <h3 class="m-0">یک رای گیری ساده برای پیدا کردن بهترین استاد از نظر داشنجویان</h3>
+        </div>
         <transition name="fade" mode="out-in">
             <router-view/>
         </transition>
@@ -65,4 +68,10 @@
         color: #42b983;
         font-size: 40px !important;
     }
+
+    .customRounded2 {
+        border-top-left-radius: 0.25rem !important;
+        border-top-right-radius: 0.25rem !important;
+    }
+
 </style>

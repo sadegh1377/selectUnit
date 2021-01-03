@@ -1,13 +1,10 @@
 <template>
-    <div id="Voting" class="container bg-dark">
+    <div id="Voting" class="container bg-dark customRounded mb-2">
         <!--        <button @click="addJsonToStore">add to database</button>-->
         <!--        <button @click="getImageUrl">calllllllll</button>-->
-
-        <div class="bg-success rounded text-white">
-            <h3>یک رای گیری ساده برای پیدا کردن بهترین استاد از نظر داشنجویان</h3>
-        </div>
-        <div class="row equal">
-            <div id="card" class="col-lg-3 col-md-4 col-sm-5 mt-3 py-2 cards" v-for="(prof,id) in professors" :key="id">
+        <div class="row">
+            <div id="card" class="col-lg-3 col-md-4 col-sm-5 mt-3   py-2 cards" v-for="(prof,id) in professors"
+                 :key="id">
                 <div class="card h-100 ">
                     <div class="card-img-top">
                         <img class="img-fluid img" :src="prof.image" :alt="prof.name">
@@ -295,31 +292,15 @@
             //     // })
             // })
         },
-        mounted() {
-            // gsap.from('.card', {
-            //     duration: 0.5,
-            //     opacity: 0,
-            //     scale: 0,
-            //     y: 400,
-            //     ease: 'power1',
-            //     stagger: {
-            //         from: 'end',
-            //         each: 0.1,
-            //     }
-            // })
-            gsap.from('.equal', {
-                duration: 0.5,
-                opacity: 0,
-                scale: 0,
-                y: 400,
-                ease: 'power1',
-                stagger: 0.1
-            })
-        }
     }
 </script>
 
 <style scoped>
+    .customRounded {
+        border-bottom-left-radius: 0.25rem !important;
+        border-bottom-right-radius: 0.25rem !important;
+    }
+
     .hover {
         cursor: pointer;
     }
