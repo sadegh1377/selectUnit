@@ -5,11 +5,36 @@
         <div class="row">
             <div id="card" class="col-lg-3 col-md-4 col-sm-5 mt-3   py-2 cards" v-for="(prof,id) in professors"
                  :key="id">
-                <div class="card h-100 ">
+                <div class="card h-100">
                     <div class="card-img-top">
                         <img class="img-fluid img" :src="prof.image" :alt="prof.name">
                     </div>
                     <div class="card-body">
+                        <div v-if="id === 0">
+                            <font-awesome-icon
+                                    icon="star"
+                                    class="hover text-center stars"></font-awesome-icon>
+                            <font-awesome-icon
+                                    icon="star"
+                                    class="hover text-center stars"></font-awesome-icon>
+                            <font-awesome-icon
+                                    icon="star"
+                                    class="hover text-center stars"></font-awesome-icon>
+                        </div>
+                        <div v-if="id === 1">
+                            <font-awesome-icon
+                                    icon="star"
+                                    class="hover text-center stars"></font-awesome-icon>
+                            <font-awesome-icon
+                                    icon="star"
+                                    class="hover text-center stars"></font-awesome-icon>
+                        </div>
+                        <div v-if="id === 2">
+                            <font-awesome-icon
+                                    icon="star"
+                                    class="hover text-center stars"></font-awesome-icon>
+                        </div>
+
                         <div class="card-text">
                             <p>
                                 {{prof.name}}
@@ -295,6 +320,10 @@
 </script>
 
 <style scoped>
+    .stars {
+        color: gold;
+    }
+
     .customRounded {
         border-bottom-left-radius: 0.25rem !important;
         border-bottom-right-radius: 0.25rem !important;
