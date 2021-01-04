@@ -21,14 +21,14 @@
 
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-danger"
+                        <button class="btn bg-success "
                                 @click="plusVote(prof)"
                                 :disabled="checkStorage(prof) === 1">
                             <font-awesome-icon icon="plus"
                                                class="hover "></font-awesome-icon>
                         </button>
                         {{prof.rate}}
-                        <button class="btn btn-success"
+                        <button class="btn bg-danger"
                                 :disabled="checkStorage(prof) === 0"
                                 @click="minusVote(prof)">
                             <font-awesome-icon icon="minus"
@@ -204,7 +204,6 @@
         },
         methods:
             {
-
                 plusVote(prof) {
                     console.log(prof.id.toString())
                     firebase.firestore().collection("professors").doc(prof.id.toString()).update({
