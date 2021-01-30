@@ -224,7 +224,8 @@
                 // }],
                 image: null,
                 count: 1,
-                flag: false
+                flag: false,
+                ip: null
             }
         },
         methods:
@@ -242,13 +243,36 @@
                 }
                 ,
                 minusVote(prof) {
-                    console.log(prof.id.toString())
-                    firebase.firestore().collection("professors").doc(prof.id.toString()).update({
-                        rate: --prof.rate
-                    }).catch(err => {
-                        console.log(err.toString())
-                    })
-                    localStorage.setItem(prof.name, 0);
+                    if (prof.ipAdds.length === 0) {
+                        prof.ipAdds.push(this.ip)
+                        firebase.firestore().collection("professors").doc(prof.id.toString())
+                            .update({
+                                // rate: ++prof.rate,
+                                ipAdds: prof.ipAdds
+                            }).catch(err => {
+                            console.log(err.toString())
+                        })
+                        localStorage.setItem(prof.name, 0);
+                        // console.log("first if")
+                    } else {
+                        // console.log("first else")
+                        const found = prof.ipAdds.some(el => el === this.ip);
+                        if (found) {
+                            this.feedback = "شما رای داده اید"
+                            console.log(this.feedback)
+                        } else {
+                            // console.log("second else")
+                            prof.ipAdds.push(this.ip)
+                            firebase.firestore().collection("professors").doc(prof.id.toString())
+                                .update({
+                                    // rate: ++prof.rate,
+                                    ipAdds: prof.ipAdds
+                                }).catch(err => {
+                                console.log(err.toString())
+                            })
+                            localStorage.setItem(prof.name, 0);
+                        }
+                    }
                     // window.location.reload();
                 }
                 ,
@@ -284,6 +308,13 @@
             }
         ,
         created() {
+
+            fetch('https://api.ipify.org?format=json')
+                .then(x => x.json())
+                .then(({ip}) => {
+                    this.ip = ip;
+                })
+
             firebase.firestore().collection("professors").orderBy("rate", "desc")
                 .get().then((snapshot) => {
                 snapshot.forEach((doc) => {
