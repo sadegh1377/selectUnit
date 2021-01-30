@@ -21,7 +21,7 @@
                                v-model="cr.profName">
                     </td>
                     <td>
-                        <input type="number" v-model.number="cr.unit" min="0" max="10">
+                        <input type="number" v-model.number="cr.unit" min="0" max="5" :disabled="cr.unit">
                     </td>
                     <td v-for="i in numberOfTextArea">
                         <textarea></textarea>
@@ -67,7 +67,6 @@
                 headerOfTable: ["نام درس", "نام استاد", "واحد", "شنبه",
                     "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "امتحان"],
                 feedback: null,
-                preUnit: null
 
             }
         },
@@ -76,7 +75,6 @@
                 this.courses.splice(index, 1);
             },
             addCrsRow() {
-                console.log(this.courses)
                 this.courses.push({
                     profName: null,
                     courseName: null,
@@ -103,6 +101,10 @@
         },
         computed: {
             calculateSum() {
+                if (this.courses.length > 1 || this.courses[this.courses.length - 1].unit) {
+                    this.sumOfUnits += Number(this.courses[this.courses.length - 1].unit);
+                    return this.sumOfUnits;
+                }
             }
         }
     }

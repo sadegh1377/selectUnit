@@ -1,19 +1,17 @@
 <template>
     <div id="app">
-        <!--        <div id="nav">-->
-        <!--            <router-link to="/" class="fontSize">انتخاب واحد</router-link>-->
-        <!--            |-->
-        <!--            <router-link to="/calculate-avg" class="fontSize">محاسبه معدل</router-link>-->
-        <!--            |-->
-        <!--            <router-link to="/to-do-list" class="fontSize">لیست کار</router-link>-->
-        <!--            |-->
-        <!--            <router-link to="/voting" class="fontSize">رای گیری</router-link>-->
-        <!--            &lt;!&ndash;            |&ndash;&gt;-->
-        <!--            &lt;!&ndash;                        <router-link to="/calculator" class="fontSize">ماشین حساب</router-link>&ndash;&gt;-->
-        <!--        </div>-->
-        <div class="bg-success container text-white w-100 mt-2 customRounded2">
-            <h3 class="m-0">یک رای گیری ساده برای پیدا کردن بهترین استاد از نظر دانشجویان</h3>
+        <div id="nav">
+            <router-link to="/" class="fontSize">انتخاب واحد</router-link>
+            |
+            <router-link to="/calculate-avg" class="fontSize">محاسبه معدل</router-link>
+            |
+            <router-link to="/to-do-list" class="fontSize">لیست کار</router-link>
+            <!--            |-->
+            <!--                        <router-link to="/calculator" class="fontSize">ماشین حساب</router-link>-->
         </div>
+        <!--        <div class="bg-success container text-white w-100 mt-2 customRounded2">-->
+        <!--            <h3 class="m-0">یک رای گیری ساده برای پیدا کردن بهترین استاد از نظر دانشجویان</h3>-->
+        <!--        </div>-->
         <transition name="fade" mode="out-in">
             <router-view/>
         </transition>
