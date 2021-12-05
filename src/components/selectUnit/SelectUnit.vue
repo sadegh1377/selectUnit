@@ -1,8 +1,8 @@
 <template>
-    <div id="BaseTable">
+    <div id="BaseTable" class="container">
         <p>مجموع واحد:{{calculateSum}}</p>
         <div ref="table">
-            <table ref="table" class="table dir">
+            <table ref="table" class="table dir  shadow">
                 <thead class="card-header">
                 <tr>
                     <th class="dir" v-for="(header, id) in headerOfTable" :key="id">
@@ -37,7 +37,7 @@
         </div>
         <div class="text-left mb-3 ml-3">
             <span v-if="feedback && courses.length===0" class="text-danger ml-3">{{feedback}}</span>
-            <button class="btn btn-primary" @click="downloadVisualReport">ذخیره کردن</button>
+            <button class="btn btn-primary shadow" @click="downloadVisualReport">ذخیره کردن</button>
 
         </div>
     </div>
@@ -126,7 +126,6 @@
 
     p {
         text-align: center;
-        font-weight: 600;
     }
 
     tr:nth-child(odd) {
@@ -134,14 +133,12 @@
     }
 
     input {
-        text-align: center;
-        opacity: 0.8;
-        padding: 16px;
-        border: 1px solid #333333;
-        border-radius: 10px;
-        outline: none;
-        width: 210px;
-        /*font-weight: 400;*/
+      text-align: center;
+      padding: 16px;
+      border: 1px solid #333;
+      border-radius: 10px;
+      outline: none;
+      width: 100%;
     }
 
     .filed {
@@ -164,20 +161,17 @@
     }
 
     input[type=number] {
-        -moz-appearance: textfield;
-        width: 50px !important;
-        border: 1px solid #333333;
-        border-radius: 10px;
-        opacity: 1 !important;
+      -moz-appearance: textfield;
+      width: 100%!important;
+      border: 1px solid #333;
+      border-radius: 10px;
+      opacity: 1!important;
     }
 
     textarea {
-        text-align: center;
-        width: 120px;
-        /*height: 50px;*/
-        font-weight: 400;
-        opacity: 0.8;
-        border: 1px solid #333333;
-        border-radius: 10px;
+      text-align: center;
+      width: 100%;
+      border: 1px solid #333;
+      border-radius: 10px;
     }
 </style>

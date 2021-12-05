@@ -1,7 +1,7 @@
 <template>
     <div id="TodoList" class="">
 
-        <div class="container col-sm-12 col-md-8 col-lg-6 mainBackground border p-3">
+        <div class="container col-sm-12 col-md-8 col-lg-6 mainBackground border p-3 shadow">
             <div class="row p-1 m-0 border listBackground mt-2 rounded"
                  :class="{bgChecked: task.isChecked === true}"
                  v-for="(task,index) in tasksList" :key="index">
