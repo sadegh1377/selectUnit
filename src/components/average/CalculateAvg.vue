@@ -14,10 +14,10 @@
           <input type="text" v-model="cr.crsName">
         </td>
         <td>
-          <input type="number" v-model="cr.grade">
+          <input type="number" min="0" v-model="cr.grade">
         </td>
         <td>
-          <input type="number" v-model="cr.unit" required>
+          <input type="number" min="1" v-model="cr.unit" required>
         </td>
         <td class="pointer" @click="deleteCrsRow(index)">
           <font-awesome-icon class="deleteColor" icon="trash"/>
