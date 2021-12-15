@@ -41,7 +41,7 @@
           <td>
             <textarea v-model="cr.examDay"></textarea>
           </td>
-          <td class="pointer" @click="deleteCrsRow(index)">
+          <td class="pointer" @click="deleteCrsRow(index,cr.unit)">
             <font-awesome-icon class="deleteColor" icon="trash"/>
           </td>
         </tr>
@@ -88,7 +88,6 @@ export default {
 
       }],
       sumOfUnits: 0,
-      numberOfTextArea: 6,
       headerOfTable: ["نام درس", "نام استاد", "واحد", "شنبه",
         "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "امتحان", "حذف"],
       feedback: null,
@@ -96,7 +95,8 @@ export default {
     }
   },
   methods: {
-    deleteCrsRow(crs) {
+    deleteCrsRow(crs, unit) {
+      this.sumOfUnits -= unit;
       this.courses.splice(crs, 1);
     },
     addCrsRow() {
@@ -132,11 +132,17 @@ export default {
   },
   watch: {
     calculateSum(newU, oldU) {
-      let newUnit = JSON.parse(newU)
-      let oldUnit = JSON.parse(oldU)
-      for (let i = 0; i < this.courses.length; i++) {
-        if (newUnit[i].unit !== oldUnit[i].unit) {
-          this.sumOfUnits = Number(this.sumOfUnits) - Number(oldUnit[i].unit) + Number(newUnit[i].unit)
+      let newUnit = JSON.parse(newU);
+      let oldUnit = JSON.parse(oldU);
+      // console.log("new = " + newU)
+      // console.log("old = " + oldU)
+      if (newUnit.length === oldUnit.length) {
+        for (let i = 0; i < this.courses.length; i++) {
+          if (newUnit[i].unit !== oldUnit[i].unit) {
+            // console.log("new = " + newUnit[i].unit)
+            // console.log("old = " + oldUnit[i].unit)
+            this.sumOfUnits = Number(this.sumOfUnits) - Number(oldUnit[i].unit) + Number(newUnit[i].unit)
+          }
         }
       }
     }
