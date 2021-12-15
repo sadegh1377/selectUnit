@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "SideBar",
+  name: "Navbar",
   data() {
     return {}
   },

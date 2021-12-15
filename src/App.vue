@@ -56,7 +56,6 @@ export default {
 }
 
 
-
 .customRounded2 {
   border-top-left-radius: 0.25rem !important;
   border-top-right-radius: 0.25rem !important;
