@@ -5,7 +5,9 @@
     <!--            <h3 class="m-0">یک رای گیری ساده برای پیدا کردن بهترین استاد از نظر دانشجویان</h3>-->
     <!--        </div>-->
     <transition name="fade" mode="out-in">
-      <router-view/>
+      <keep-alive>
+        <router-view/>
+      </keep-alive>
     </transition>
     <Footer/>
   </div>
