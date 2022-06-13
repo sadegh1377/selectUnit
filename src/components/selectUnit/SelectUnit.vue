@@ -116,6 +116,8 @@ export default {
       window.scrollTo(0, 0);
       if (this.courses.length === 0) {
         this.feedback = "حداقل یک سطر باید پر شود"
+
+
       } else {
         html2canvas(this.$refs.table).then(canvas => {
           let a = document.createElement('a');
